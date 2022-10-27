@@ -1,0 +1,14 @@
+@import 'variables.scss';
+
+@import 'main.scss';
+
+// Blocks
+@import './blocks/layouts/layout.scss';
+@import './blocks/layouts/center-layout.scss';
+
+@import './blocks/components/nav/nav-login.scss';
+
+@import './blocks/form/btn.scss';
+@import './blocks/form/btn-link.scss';
+
+@import './blocks/components/popup.scss';

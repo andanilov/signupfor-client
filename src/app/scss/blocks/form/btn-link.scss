@@ -1,0 +1,12 @@
+.btn-link {
+    background-color: transparent;
+    font-size: 1em;
+    text-decoration: underline;
+    color: $link-color;
+    transition: $base-transistion;
+
+    &:hover {
+        color: $link-color-hover;
+    }
+
+}

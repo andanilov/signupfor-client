@@ -5,5 +5,5 @@ export interface IUser {
   email: string,
   name?: string,
   isActivated: boolean,
-  roles: UserRole,
+  role: UserRole,
 }

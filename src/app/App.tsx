@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.scss';
 import config from '../config';
 import { getRoutesMapByUser } from './routes';
+import PopUpProvider from './hooks/usePopUp';
+
 
 // import api from './http/api';
 // const testRequest = async () => {
@@ -18,7 +21,11 @@ const App : FC  = () => {
   // useEffect(() => { testRequest(); }, []);
   const router = createBrowserRouter(getRoutesMapByUser(undefined, undefined));
 
-  return (<RouterProvider router={router} />);
+  return (
+    <PopUpProvider>
+      <RouterProvider router={router} />
+    </PopUpProvider>
+  );
 }
 
 export default App;

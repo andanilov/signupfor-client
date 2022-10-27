@@ -1,0 +1,13 @@
+body {
+    background-color: $main-background;
+    font-family: $main-font-family;
+
+    padding: 0;
+    margin: 0;
+}
+
+link {
+    color: $link-color;
+    transition: $base-transistion;
+}
+link:hover { color: $link-color-hover; }
