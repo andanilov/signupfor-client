@@ -18,7 +18,7 @@ interface IRoute {
 }
 
 const routesMap : IRoute[] = [
-  { path: RouteUrls.ACCOUNT, element: <AccountPage />/*, roles: ['admin', 'user']*/ },
+  { path: RouteUrls.ACCOUNT, element: <AccountPage />, roles: ['admin', 'user'] },
   { path: RouteUrls.MAIN, element: <MainPage /> },
 ];
 
@@ -26,11 +26,13 @@ export const getRoutesMapByUser = (role: UserRole|undefined, isActivated: boolea
   routesMap.map(({ path, element, ...rest }) => {
     const allowByRole = rest?.roles === undefined || rest.roles.includes(role as UserRole);
     const allowByActivated = rest?.isActivated === undefined || rest.isActivated === isActivated;
-    const redirectElement = role ? <Navigate to={RouteUrls.MAIN} /> : <Navigate to={RouteUrls.MAIN} />;
+    const redirectElement = role
+      ? <Navigate to={RouteUrls.MAIN} />
+      : <Navigate to={RouteUrls.MAIN} />;
 
     return ({
       path,
-      element: allowByRole && allowByActivated ? element : redirectElement
+      element: allowByRole && allowByActivated ? element : redirectElement,
     });
   })
 );

@@ -1,0 +1,9 @@
+.error {
+    & input {
+        border: 1px solid $error-color;
+    }
+
+    & > div {
+        color: $error-color;
+    }
+}

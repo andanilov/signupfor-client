@@ -1,4 +1,12 @@
-import { createContext, FC, MouseEventHandler, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  FC,
+  MouseEventHandler,
+  ReactNode,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
 interface IPopUpProvider {
   children: ReactNode | ReactNode[],
@@ -15,15 +23,16 @@ export const usePopUp = () : IusePopUp => useContext(PopUpContext);
 const PopUpProvider : FC<IPopUpProvider> = ({ children }) => {
   const [isOpened, toggle] = useState<boolean>(false);
 
+  const popUpValue = useMemo(() : IusePopUp => ({
+    isOpened,
+    toggleHandle: () => toggle((prevState : boolean) => !prevState),
+  }), [isOpened]);
+
   return (
-    <PopUpContext.Provider value={{
-      isOpened,
-      toggleHandle: () => toggle((prevState : boolean) => !prevState),
-      } as IusePopUp}
-    >
+    <PopUpContext.Provider value={popUpValue}>
       {children}
     </PopUpContext.Provider>
   );
-}
+};
 
 export default PopUpProvider;

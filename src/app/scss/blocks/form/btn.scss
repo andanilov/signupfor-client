@@ -2,4 +2,19 @@
     border: none;
     outline: none;
     cursor: pointer;
+    border-radius: .3em;
+    transition: $base-transistion;
+
+    &--success {
+        background-color: $bg-success;
+        color: white;        
+
+        &:hover { background-color: $bg-success-light; }
+    }
+
+    &--large {
+        font-size: $text-large;
+        padding: .5em;
+    }
+
 }

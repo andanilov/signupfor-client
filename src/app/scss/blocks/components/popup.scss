@@ -13,12 +13,12 @@
     backdrop-filter: blur(2px);
 
     & > .container {
-        padding: 30px;        
+        padding: 35px;        
         background-color: #F1F1F1;
-        border-radius: 10px;
+        border-radius: 25px;
     }
 
     &__content {
-        width: 400px;
+        width: 300px;
     }
 }
