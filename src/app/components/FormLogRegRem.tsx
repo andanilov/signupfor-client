@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 // import { useAuth } from '../../hooks/useAuth';
 // import AuthService from '../../services/AuthService';
 import ControlledForm, {
@@ -24,9 +25,10 @@ const LogRegMap : ILogRegMap = {
 const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
   const [currentStatus, setCurrentStatus] = useState(status || 'log');
   // const { handleLogin, handleRegistration, handleRemember } = useAuth();
+  const { handleRegistration } = useAuth();
 
   const handleLogin = () => { console.log('!!!'); };
-  const handleRegistration = () => { console.log('!!!'); };
+  // const handleRegistration = () => { console.log('!!!'); };
   const handleRemember = () => { console.log('!!!'); };
 
   return (

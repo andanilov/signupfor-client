@@ -15,9 +15,14 @@ interface IPopUpProvider {
 interface IusePopUp {
   isOpened: boolean,
   toggleHandle: MouseEventHandler,
+  closePopUp: Function,
 }
 
-const PopUpContext = createContext<IusePopUp>({ toggleHandle: () => {}, isOpened: false });
+const PopUpContext = createContext<IusePopUp>({
+  toggleHandle: () => {},
+  isOpened: false,
+  closePopUp: () => {},
+});
 export const usePopUp = () : IusePopUp => useContext(PopUpContext);
 
 const PopUpProvider : FC<IPopUpProvider> = ({ children }) => {
@@ -26,6 +31,7 @@ const PopUpProvider : FC<IPopUpProvider> = ({ children }) => {
   const popUpValue = useMemo(() : IusePopUp => ({
     isOpened,
     toggleHandle: () => toggle((prevState : boolean) => !prevState),
+    closePopUp: () => toggle(() => false),
   }), [isOpened]);
 
   return (

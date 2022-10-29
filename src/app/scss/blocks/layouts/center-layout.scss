@@ -1,6 +1,6 @@
 .center-layout {
     display: grid;
-    min-height: 100vh;
+    min-height: 100vh;    
 
     &__nav-login {
         position: absolute;
@@ -12,5 +12,6 @@
         display: grid;
         justify-content: center;
         align-items: center;
+        align-content: center;
     }
 }

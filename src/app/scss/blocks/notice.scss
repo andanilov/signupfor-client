@@ -1,0 +1,58 @@
+$notice-success-bg: #f0fdf4;
+$notice-success-color: #15803d;
+$notice-info-bg: #f1f5f9;
+$notice-info-color: #475569;
+$notice-warning-bg: #fffbeb;
+$notice-warning-color: #92400e;
+$notice-error-bg: #fef2f2;
+$notice-error-color: #dc2626;
+
+$notice-small: 1em;
+$notice-medium: 1.2em;
+$notice-large: 1.5em;
+
+.notice {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid;
+    border-radius: 0.5em;
+
+    &--success {
+        background-color: $notice-success-bg;
+        color: $notice-success-color;
+        border-color: rgba($notice-success-color, .1);
+    }
+    &--warning {
+        background-color: $notice-warning-bg;
+        color: $notice-warning-color;
+        border-color: rgba($notice-warning-color, .1);
+    }
+    &--info {
+        background-color: $notice-info-bg;
+        color: $notice-info-color;
+        border-color: rgba($notice-info-color, .1);
+    }
+    &--error {
+        background-color: $notice-error-bg;
+        color: $notice-error-color;
+        border-color: rgba($notice-error-color, .1);
+    }
+
+    &--small { font-size: $notice-small; }
+    &--medium { font-size: $notice-medium; }
+    &--large { font-size: $notice-large; }
+    
+    svg {
+        margin-right: 1em;
+        min-width: 3em;
+        min-height: 3em;
+        opacity: .3;
+    }
+
+    &__content {
+
+    }
+}

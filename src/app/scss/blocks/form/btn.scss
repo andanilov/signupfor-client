@@ -17,4 +17,8 @@
         padding: .5em;
     }
 
+    &[disabled] {
+        opacity: .5;
+    }
+
 }

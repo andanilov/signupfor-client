@@ -2,6 +2,9 @@ import React, { FC } from 'react';
 import { usePopUp } from './common/PopUp/usePopUp';
 import PopUp from './common/PopUp';
 import FormLogReg from './FormLogRegRem';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { IauthInitState } from '../store/authSlice';
+import IUser from '../models/IUser';
 
 interface INavLogin {
   className?: string,
@@ -9,17 +12,16 @@ interface INavLogin {
 
 const NavLogin : FC<INavLogin> = ({ className = '' }) => {
   const { isOpened, toggleHandle } = usePopUp();
+  const { user } = useTypedSelector((state) => state.auth);
+
+  // if (user) return (<>Hello!</>);
 
   return (
     <>
       <nav className={`nav-login ${className}`}>
-        <button
-          className="btn btn-link"
-          onClick={toggleHandle}
-          type="button"
-        >
-          Войти
-        </button>
+        {user
+          ? (<button className="btn btn-link" type="button">{user.email}</button>)
+          : (<button className="btn btn-link" onClick={toggleHandle} type="button">Войти</button>)}
       </nav>
       <PopUp>
         <FormLogReg />

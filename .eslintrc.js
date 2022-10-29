@@ -52,5 +52,9 @@ module.exports = {
         "jsx-a11y/label-has-associated-control": 0,
         "react/button-has-type": 0,
         "react/jsx-no-useless-fragment": 0,
+        "import/prefer-default-export": 0,
+        "max-len": 0,
+        "import/no-cycle": 0,
+        "react/jsx-one-expression-per-line": 0,
     }
 }

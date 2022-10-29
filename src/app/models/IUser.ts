@@ -1,6 +1,6 @@
 export type UserRole = 'admin' | 'user';
 
-export interface IUser {
+export default interface IUser {
   _id: string,
   email: string,
   name?: string,
