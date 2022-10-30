@@ -25,16 +25,14 @@ const LogRegMap : ILogRegMap = {
 const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
   const [currentStatus, setCurrentStatus] = useState(status || 'log');
   // const { handleLogin, handleRegistration, handleRemember } = useAuth();
-  const { handleRegistration } = useAuth();
+  const { handleLogin, handleRegistration } = useAuth();
 
-  const handleLogin = () => { console.log('!!!'); };
-  // const handleRegistration = () => { console.log('!!!'); };
   const handleRemember = () => { console.log('!!!'); };
 
   return (
     <div className="form-block">
       <header className="form-block__header">
-        <div className="logo-small" />
+        <div className="logo logo--small" />
         <div className="form-block__title">{LogRegMap[currentStatus].title}</div>
       </header>
       <>

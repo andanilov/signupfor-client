@@ -32,19 +32,20 @@ export function useAuth() {
     }
   };
 
-  // const handleRemember : HandleSubmit = async ({ email }, setErrors) => {
-  //   try {
-  //     // 1. Try to login
-  //     await AuthService.remember(email as string);
-  //     // 2. Go to main page
-  //     navigate(RouteNames.LOGIN, { state: { msg: 'Ссылка на смену пароля была отправлена' } });
-  //   } catch (e) {
-  //     if (e instanceof AxiosError) {
-  //       const msg = e.response?.data?.message ?? 'Ошибка сброса пароля!';
-  //       setErrors((prevError : Object) => ({ ...prevError, email: msg }));
-  //     }
-  //   }
-  // };
+  const handleRemember : HandleSubmit = async ({ email }, setErrors) => {
+    try {
+      await AuthService.remember(email as string);
+      closePopUp();
+
+      // 2. Go to main page
+      // navigate(setParamAndGetUrlMessage(RouteUrls.API_MSG, ), { state: { msg: 'Ссылка на смену пароля была отправлена' } });
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        const msg = e.response?.data?.message ?? 'Ошибка сброса пароля!';
+        setErrors((prevError : Object) => ({ ...prevError, email: msg }));
+      }
+    }
+  };
 
   const handleRegistration : HandleSubmit = async ({ email, password, name = '' }, setErrors) => {
     try {
@@ -70,25 +71,22 @@ export function useAuth() {
     }
   };
 
-  // const handleLogout = async () => {
-  //   try {
-  //     const userData = await AuthService.logout();
-  //     // 2. Set token to storage
-  //     StorageService.removeAccesToken();
-  //     // 3. Set user to global state
-  //     dispatch(removeUser());
-  //     // 4. Go to main page
-  //     redirect(RouteNames.MAIN);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  const handleLogout = async () => {
+    try {
+      const userData = await AuthService.logout();
+      StorageService.removeAccesToken();
+      dispatch(removeUser());
+      navigate(RouteUrls.MAIN);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return {
     // loadingCheckAuth,
     handleLogin,
-    // handleLogout,
+    handleLogout,
     handleRegistration,
-    // handleRemember,
+    handleRemember,
   };
 }

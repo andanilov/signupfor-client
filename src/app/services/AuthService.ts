@@ -21,4 +21,13 @@ export default class AuthService {
     const { data } = await api.post(ApiRoutes.LOGIN, { email, password });
     return data;
   }
+
+  static async remember(email: string) {
+    const { data } = await api.post(ApiRoutes.REMEMBER, { email });
+    return data;
+  }
+
+  static async logout() {
+    await api.post(ApiRoutes.LOGOUT);
+  }
 }

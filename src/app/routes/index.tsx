@@ -4,10 +4,13 @@ import { UserRole } from '../models/IUser';
 
 import MainPage from '../pages/Main';
 import AccountPage from '../pages/Account';
+import Message from '../pages/Message';
 
 export enum RouteUrls {
   MAIN = '/',
   ACCOUNT = '/account',
+
+  API_MSG = '/msg/:message',
 }
 
 interface IRoute {
@@ -20,6 +23,9 @@ interface IRoute {
 const routesMap : IRoute[] = [
   { path: RouteUrls.ACCOUNT, element: <AccountPage />, roles: ['admin', 'user'] },
   { path: RouteUrls.MAIN, element: <MainPage /> },
+
+  { path: RouteUrls.API_MSG, element: <Message /> },
+
 ];
 
 export const getRoutesMapByUser = (role: UserRole|undefined, isActivated: boolean|undefined) => (

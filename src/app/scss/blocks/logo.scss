@@ -1,0 +1,23 @@
+.logo {
+    background-repeat: no-repeat;
+    background-position: center;
+    text-decoration: none;
+
+    &--small {
+        background-image: url('../img/logo-small.webp');
+        min-width: 77px;
+        min-height: 41px;   
+    }
+
+    &--medium {
+        background-image: url('../img/logo-medium.webp');
+        min-width: 77px;
+        min-height: 41px;   
+    }
+
+    &--large {
+        background-image: url('../img/logo-large.webp');
+        min-width: 123px;
+        min-height: 101px;   
+    }
+}

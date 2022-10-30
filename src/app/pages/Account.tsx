@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import CenterLayout from '../../layouts/CenterLayout';
+import CenterLayout from '../layouts/CenterLayout';
 
 const AccountPage : FC = () => (
   <CenterLayout>
