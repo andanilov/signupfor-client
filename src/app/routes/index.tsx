@@ -21,7 +21,8 @@ interface IRoute {
 }
 
 const routesMap : IRoute[] = [
-  { path: RouteUrls.ACCOUNT, element: <AccountPage />, roles: ['admin', 'user'] },
+  { path: RouteUrls.ACCOUNT, element: <AccountPage /> },
+  // { path: RouteUrls.ACCOUNT, element: <AccountPage />, roles: ['admin', 'user'] },
   { path: RouteUrls.MAIN, element: <MainPage /> },
 
   { path: RouteUrls.API_MSG, element: <Message /> },

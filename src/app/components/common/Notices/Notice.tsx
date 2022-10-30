@@ -6,12 +6,13 @@ import {
   IoWarning,
   IoCheckboxOutline,
 } from 'react-icons/io5';
-import { TNoticeType } from '../../models/TNoticeType';
+import { TNoticeType } from '../../../models/TNoticeType';
 
-interface INotice {
+export interface INotice {
   children: ReactNode | string,
   type?: TNoticeType,
   size?: 'small' | 'medium' | 'large',
+  constant?: boolean,
 }
 
 const iconMap = {
@@ -21,8 +22,14 @@ const iconMap = {
   info: <IoBookmarkOutline />,
 };
 
-const Notice : FC<INotice> = ({ children, type = 'info', size = 'medium' }) => (
+const Notice : FC<INotice> = ({
+  children,
+  type = 'info',
+  size = 'medium',
+  constant = false,
+}) => (
   <div className={`notice notice--${type} notice--${size}`}>
+    {/* {!temporary && (<div className="notice__close"></div>)} */}
     {iconMap?.[type] && iconMap[type]}
     <div className="notice__content">
       {(typeof children === 'string')

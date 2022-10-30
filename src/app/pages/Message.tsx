@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import Logo from '../components/common/Logo';
-import Notice from '../components/common/Notice';
+import Notice from '../components/common/Notices/Notice';
 import CenterLayout from '../layouts/CenterLayout';
 import { TNoticeType } from '../models/TNoticeType';
 import config from '../../config';

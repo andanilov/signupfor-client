@@ -56,5 +56,6 @@ module.exports = {
         "max-len": 0,
         "import/no-cycle": 0,
         "react/jsx-one-expression-per-line": 0,
+        "react/jsx-no-constructed-context-values": 0,
     }
 }

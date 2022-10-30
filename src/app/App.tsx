@@ -6,6 +6,7 @@ import { getRoutesMapByUser } from './routes';
 import PopUpProvider from './components/common/PopUp/usePopUp';
 import { checkAuth } from './store/authSlice';
 import './App.scss';
+import NoticesProvider from './components/common/Notices';
 
 const App : FC = () => {
   const { user } = useTypedSelector((state) => state.auth);
@@ -16,9 +17,11 @@ const App : FC = () => {
 
   return (user !== undefined
     ? (
-      <PopUpProvider>
-        <RouterProvider router={router} />
-      </PopUpProvider>
+      <NoticesProvider>
+        <PopUpProvider>
+          <RouterProvider router={router} />
+        </PopUpProvider>
+      </NoticesProvider>
     ) : <h1>Загрузка пользователя</h1>
   );
 };
