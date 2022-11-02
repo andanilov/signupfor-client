@@ -26,7 +26,7 @@ api.interceptors.response.use((config) => config, async (error) => {
       console.log(e);
     }
   }
-  return false;
+  throw error;
 });
 
 export default api;

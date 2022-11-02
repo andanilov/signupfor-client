@@ -1,0 +1,8 @@
+.separator {
+    height: 3em;
+    width: 100%;
+
+    &--small { height: 1em; }
+    &--medium { height: 2em; }
+    &--large { height: 3em; }
+}

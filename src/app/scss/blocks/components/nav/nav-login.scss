@@ -1,0 +1,32 @@
+.nav-login {
+    display: flex;
+    align-items: center;
+
+    &__item {
+        padding: .5em .8em;
+        border-radius: .5em;
+        margin: 0 .3em;
+        font-size: 1.1em;
+
+        &:hover {
+            background-color: white;
+            text-decoration: none;
+        }
+
+        &.active {
+            background-color: white;
+            text-decoration: none;
+        }
+
+        &--icon {
+            width: 2em;
+            height: 2em;
+            padding: .5em .8em;
+            color: $link-color;
+            cursor: pointer;
+            transition: $base-transistion;
+        }
+
+        &--icon:hover { background-color: white; }
+    }
+}

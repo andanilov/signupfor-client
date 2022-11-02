@@ -1,13 +1,26 @@
-import React, { FC, ReactNode, useRef } from 'react';
+import React, {
+  FC,
+  ReactNode,
+  useEffect,
+  useRef,
+} from 'react';
 import { usePopUp } from './usePopUp';
 
 interface IPopUp {
   children: ReactNode,
+  isOpenedDefault?: boolean,
 }
 
-const PopUp : FC<IPopUp> = ({ children }) => {
-  const { isOpened, toggleHandle } = usePopUp();
+const PopUp : FC<IPopUp> = ({ children, isOpenedDefault }) => {
+  const {
+    isOpened,
+    toggleHandle,
+    openPopUp,
+    closePopUp,
+  } = usePopUp();
   const sectionRef = useRef(null);
+
+  useEffect(() => { (isOpenedDefault !== undefined) && (isOpenedDefault ? openPopUp() : closePopUp()); }, []);
 
   return (
     <section

@@ -24,10 +24,7 @@ const LogRegMap : ILogRegMap = {
 
 const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
   const [currentStatus, setCurrentStatus] = useState(status || 'log');
-  // const { handleLogin, handleRegistration, handleRemember } = useAuth();
-  const { handleLogin, handleRegistration } = useAuth();
-
-  const handleRemember = () => { console.log('!!!'); };
+  const { handleLogin, handleRegistration, handleRemember } = useAuth();
 
   return (
     <div className="form-block">
@@ -37,7 +34,7 @@ const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
       </header>
       <>
         {currentStatus === 'log' && (
-          <ControlledForm handleSubmit={handleLogin} className="form-block__form">
+          <ControlledForm handleSubmit={handleLogin} className="form form-block__form">
             <TextField
               name="email"
               label="Email"
@@ -54,7 +51,7 @@ const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
               rules={{ isRequired: { msg: 'Введите пароль!' } }}
               className="form-item form-block__form-item"
             />
-            <Button type="submit" className="btn btn--success btn--large form-block__btn">
+            <Button type="submit" className="btn btn--success btn--large form-block__btn--wide">
               {LogRegMap[currentStatus].button}
             </Button>
           </ControlledForm>
@@ -91,7 +88,7 @@ const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
               rules={{ isSimilar: { original: 'password', msg: 'Пароли не совпадают!' } }}
               className="form-item form-block__form-item"
             />
-            <Button type="submit" className="btn btn--success btn--large form-block__btn">
+            <Button type="submit" className="btn btn--success btn--large form-block__btn--wide">
               {LogRegMap[currentStatus].button}
             </Button>
           </ControlledForm>
@@ -109,7 +106,7 @@ const FormLogReg: FC<{ status?: keyof ILogRegMap }> = ({ status = 'log' }) => {
               }}
               className="form-item form-block__form-item"
             />
-            <Button type="submit" className="btn btn--success btn--large form-block__btn">
+            <Button type="submit" className="btn btn--success btn--large form-block__btn--wide">
               {LogRegMap[currentStatus].button}
             </Button>
           </ControlledForm>

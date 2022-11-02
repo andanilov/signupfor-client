@@ -1,0 +1,46 @@
+.nav-main {
+    display: flex;
+    list-style: none;    
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+    &__item {
+        display: grid;
+        align-content: center;
+        text-align: center;
+        text-decoration: none;
+        padding: 0em;
+        width: 120px;
+        height: 100%;
+
+        svg {
+            width: 50px;
+            height: 50px;
+            opacity: .5;
+            margin: 0 auto;
+            transition: $base-transistion;
+        }
+
+        &:hover {
+            background-color: white;
+
+            svg { 
+                color: inherit;
+                opacity: 1;
+            }
+        }
+        
+        &--main, &--main:hover { color: $color-main; }
+        &--main:hover { color: $color-main; }
+                
+        &--second, &--second:hover { color: $color-second; }
+        &--second:hover { color: $color-second; }
+
+        &.active {
+            background-color: white;
+
+            svg { opacity: 1; }
+        }
+    }
+}

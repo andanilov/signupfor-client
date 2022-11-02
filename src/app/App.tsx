@@ -4,14 +4,14 @@ import { useTypedDispatch } from './hooks/useTypedDispatch';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import { getRoutesMapByUser } from './routes';
 import PopUpProvider from './components/common/PopUp/usePopUp';
-import { checkAuth } from './store/authSlice';
+import { checkAuth, getCurrentUser } from './store/authSlice';
 import './App.scss';
 import NoticesProvider from './components/common/Notices';
 
 const App : FC = () => {
-  const { user } = useTypedSelector((state) => state.auth);
+  const user = useTypedSelector(getCurrentUser());
   const dispatch = useTypedDispatch();
-  const router = createBrowserRouter(getRoutesMapByUser(undefined, undefined));
+  const router = createBrowserRouter(getRoutesMapByUser(user));
 
   useEffect(() => { dispatch(checkAuth()); }, []);
 

@@ -4,10 +4,15 @@
 
 // Blocks
 @import './blocks/layouts/layout.scss';
+@import './blocks/layouts/main-layout.scss';
 @import './blocks/layouts/center-layout.scss';
 
 @import './blocks/components/nav/nav-login.scss';
+@import './blocks/components/nav/nav-main.scss';
+@import './blocks/components/nav/nav-page.scss';
+@import './blocks/components/nav/nav-item.scss';
 
+@import './blocks/form/form.scss';
 @import './blocks/form/form-block.scss';
 @import './blocks/form/form-item.scss';
 @import './blocks/form/btn.scss';
@@ -18,3 +23,4 @@
 
 @import './blocks/logo.scss';
 @import './blocks/notice.scss';
+@import './blocks/separator.scss';

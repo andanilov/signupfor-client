@@ -19,7 +19,8 @@ export interface ICommonField {
   defaultValue?: string,
   rules?: ValidationRules,
   error?: FieldError,
-  className?: string
+  className?: string,
+  disabled?: boolean,
 }
 
 export interface ITextField extends ICommonField {

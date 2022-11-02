@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import ILocationState from '../models/ILocation';
+import { ILocationState } from '../routes';
 
 export default class NavigateService {
   static shiftLocationState = () => {

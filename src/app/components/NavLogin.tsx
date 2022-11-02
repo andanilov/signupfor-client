@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-
+import { IoLogOutOutline } from 'react-icons/io5';
 import { usePopUp } from './common/PopUp/usePopUp';
 import PopUp from './common/PopUp';
 import FormLogReg from './FormLogRegRem';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { IauthInitState } from '../store/authSlice';
-import IUser from '../models/IUser';
 import { useAuth } from '../hooks/useAuth';
-import { RouteUrls } from '../routes';
+import { routesMap } from '../routes';
+import NavigateService from '../services/NavigateService';
+import NavLinkStyled from './common/NavLinkStyled';
 
 interface INavLogin {
   className?: string,
@@ -25,14 +24,15 @@ const NavLogin : FC<INavLogin> = ({ className = '' }) => {
         {user
           ? (
             <>
-              <Link to={RouteUrls.ACCOUNT}>{user.email}</Link>
-              <Link to={RouteUrls.MAIN}>Главная</Link>
-              <button className="btn btn-link" onClick={handleLogout} type="button">Выйти</button>
+              <NavLinkStyled to={routesMap.PROFILE.path} className="nav-item nav-login__item">
+                {user.name ?? user.email}
+              </NavLinkStyled>
+              <IoLogOutOutline onClick={handleLogout} className="nav-item nav-login__item--icon" />
             </>
           )
           : (<button className="btn btn-link" onClick={toggleHandle} type="button">Войти</button>)}
       </nav>
-      <PopUp>
+      <PopUp isOpenedDefault={NavigateService.shiftLocationState()?.login}>
         <FormLogReg />
       </PopUp>
     </>

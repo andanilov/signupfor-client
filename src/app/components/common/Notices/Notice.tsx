@@ -6,7 +6,8 @@ import {
   IoWarning,
   IoCheckboxOutline,
 } from 'react-icons/io5';
-import { TNoticeType } from '../../../models/TNoticeType';
+
+export type TNoticeType = 'success' | 'warning' | 'error' | 'info';
 
 export interface INotice {
   children: ReactNode | string,

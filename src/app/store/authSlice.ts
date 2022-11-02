@@ -2,9 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import IUser from '../models/IUser';
 import AuthService from '../services/AuthService';
 import StorageService from '../services/StorageService';
+import { RootState } from '.';
 
+export type TUserState = IUser | null | undefined;
 export interface IauthInitState {
-  user: IUser | null | undefined, // undefined - loading check auth, null - guest, IUser - user
+  user: TUserState, // undefined - loading check auth, null - guest, IUser - user
 }
 
 // --- Async actions
@@ -36,3 +38,6 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 export const { setUser, removeUser } = authSlice.actions;
+
+// Selectors
+export const getCurrentUser = () => (state: RootState) => state.auth.user;

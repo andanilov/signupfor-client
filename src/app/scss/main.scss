@@ -6,8 +6,9 @@ body {
     margin: 0;
 }
 
-link {
+a {
     color: $link-color;
     transition: $base-transistion;
+    font-size: 1em;
 }
-link:hover { color: $link-color-hover; }
+a:hover { color: $link-color-hover; }

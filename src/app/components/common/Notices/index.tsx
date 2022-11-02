@@ -4,8 +4,10 @@ import React, {
   FC,
   useState,
   useCallback,
+  useEffect,
 } from 'react';
 import { INotice } from './Notice';
+import apiNoticeMap from './apiNoticeMap';
 
 interface INoticesProvider {
   children: ReactNode | ReactNode[],
@@ -43,6 +45,16 @@ const NoticesProvider : FC<INoticesProvider> = ({ children }) => {
   const pushNotice = useCallback((notice: INotice) => setNotices((prevNotices) => [...prevNotices, notice]), []);
   const unshiftNotice = useCallback((notice: INotice) => setNotices((prevNotices) => [notice, ...prevNotices]), []);
   const deleteNotice = useCallback((index: number) => setNotices((prevNotices) => prevNotices.splice(index, 1)), []);
+
+  // -- Add message from server by GET parameters (api-msg)
+  // if (apiMsg) {
+  // console.log(apiMsg);
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const apiMsg = queryParams.get('apiMsg');
+    apiMsg && apiNoticeMap[apiMsg] && pushNotice(apiNoticeMap[apiMsg]);
+  }, []);
+  // }
 
   return (
     <NoticesContext.Provider value={{

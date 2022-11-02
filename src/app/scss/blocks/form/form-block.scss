@@ -25,6 +25,12 @@
     }
 
     &__btn {
+        width: auto;
+        box-sizing: border-box;
+        margin-top: 1em;
+    }
+
+    &__btn--wide {
         width: 100%;
         box-sizing: border-box;
         margin-top: 1em;

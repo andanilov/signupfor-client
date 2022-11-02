@@ -2,6 +2,7 @@
     background-repeat: no-repeat;
     background-position: center;
     text-decoration: none;
+    display: inline-block;
 
     &--small {
         background-image: url('../img/logo-small.webp');
@@ -11,8 +12,8 @@
 
     &--medium {
         background-image: url('../img/logo-medium.webp');
-        min-width: 77px;
-        min-height: 41px;   
+        min-width: 93px;
+        min-height: 74px;   
     }
 
     &--large {
