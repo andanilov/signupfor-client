@@ -16,7 +16,9 @@ interface INoticesProvider {
 interface INoticesContext {
   notices: INotice[],
   updateNotice(): INotice[],
+  isNoticeExists(notice: INotice): boolean,
   pushNotice(notice: INotice): void,
+  pushNoticeUnique(notice: INotice): void,
   unshiftNotice(notice: INotice): void,
   deleteNotice(indexNotice: number): void,
 }
@@ -24,7 +26,9 @@ interface INoticesContext {
 const NoticesContext = React.createContext<INoticesContext>({
   notices: [],
   updateNotice: () => [],
+  isNoticeExists: () => false,
   pushNotice: () => {},
+  pushNoticeUnique: () => {},
   unshiftNotice: () => {},
   deleteNotice: () => {},
 });
@@ -42,13 +46,15 @@ const NoticesProvider : FC<INoticesProvider> = ({ children }) => {
     return noticesCurrent;
   };
 
+  const isNoticeExists = useCallback((notice: INotice) => notices.some(({ children }) => notice.children
+    && notice.children === children), []);
+
   const pushNotice = useCallback((notice: INotice) => setNotices((prevNotices) => [...prevNotices, notice]), []);
+  const pushNoticeUnique = useCallback((notice: INotice) => !isNoticeExists(notice) && pushNotice(notice), []);
   const unshiftNotice = useCallback((notice: INotice) => setNotices((prevNotices) => [notice, ...prevNotices]), []);
   const deleteNotice = useCallback((index: number) => setNotices((prevNotices) => prevNotices.splice(index, 1)), []);
 
   // -- Add message from server by GET parameters (api-msg)
-  // if (apiMsg) {
-  // console.log(apiMsg);
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const apiMsg = queryParams.get('apiMsg');
@@ -59,7 +65,9 @@ const NoticesProvider : FC<INoticesProvider> = ({ children }) => {
   return (
     <NoticesContext.Provider value={{
       notices,
+      isNoticeExists,
       updateNotice,
+      pushNoticeUnique,
       pushNotice,
       unshiftNotice,
       deleteNotice,

@@ -49,7 +49,7 @@ export const rules : IRules = {
     ? false
     : msg),
 
-  max: ({ len = 3, msg = 'Слишком длинная запись' }) => (data) => (String(data).trim().length <= len
+  max: ({ len = 24, msg = 'Слишком длинная запись' }) => (data) => (String(data).trim().length <= len
     ? false
     : msg),
 

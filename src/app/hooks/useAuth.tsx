@@ -10,9 +10,10 @@ import { setUser, removeUser } from '../store/authSlice';
 import { usePopUp } from '../components/common/PopUp/usePopUp';
 import { AuthResponse } from '../models/response/auth-response';
 import { useNotices } from '../components/common/Notices';
+import validator, { rules } from '../utils/validator';
+import IUser from '../models/IUser';
 
 export function useAuth() {
-  // const [loadingCheckAuth, setLoadingCheckAuth] = useState(false);
   const dispatch = useTypedDispatch();
   const navigate = useNavigate();
   const { closePopUp } = usePopUp();
@@ -82,8 +83,34 @@ export function useAuth() {
     }
   };
 
+  const handleRedact : HandleSubmit = async ({ name, password }, setErrors) => {
+    try {
+      // Check password if it's not empty
+      const passTrimed = String(password).trim();
+      if (passTrimed) {
+        const validPass = validator(
+          rules.min({ len: 5, msg: 'Новый пароль слишком короткий!' }),
+          rules.max({ len: 24, msg: 'Новый пароль слишком длинный!' }),
+        )(passTrimed);
+        if (validPass) return setErrors((prevError : Object) => ({ ...prevError, password: validPass }));
+      }
+      const user = await AuthService.redact(name as string, passTrimed);
+      dispatch(setUser(user));
+      pushNotice({
+        type: 'success',
+        children: 'Личная информация обновлена успешно!',
+      });
+    } catch (e) {
+      console.log('Error!', e);
+      if (e instanceof AxiosError) {
+        const msg = e.response?.data?.message ?? 'Ошибка авторизации!';
+        setErrors((prevError : Object) => ({ ...prevError, email: msg }));
+      }
+    }
+  };
+
   return {
-    // loadingCheckAuth,
+    handleRedact,
     handleLogin,
     handleLogout,
     handleRegistration,

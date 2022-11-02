@@ -3,6 +3,7 @@ import api from '../http/api';
 import { ApiRoutes } from '../http/api-routes';
 import { AuthResponse } from '../models/response/auth-response';
 import appConfig from '../../config';
+import IUser from '../models/IUser';
 
 export default class AuthService {
   static async checkAuth(): Promise<AuthResponse> {
@@ -29,5 +30,10 @@ export default class AuthService {
 
   static async logout() {
     await api.post(ApiRoutes.LOGOUT);
+  }
+
+  static async redact(name: string, password: string) {
+    const { data } = await api.post<IUser>(ApiRoutes.REDACT, { name, password });
+    return data;
   }
 }

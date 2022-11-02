@@ -1,16 +1,18 @@
 import React, { FC, useEffect } from 'react';
 import ControlledForm, { Button, TextField } from '../components/common/ControlledForm';
 import { useNotices } from '../components/common/Notices';
+import { useAuth } from '../hooks/useAuth';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import MainLayout from '../layouts/MainLayout';
 import { getCurrentUser } from '../store/authSlice';
 
 const Profile : FC = () => {
   const user = useTypedSelector(getCurrentUser());
-  const { pushNotice } = useNotices();
+  const { pushNoticeUnique } = useNotices();
+  const { handleRedact } = useAuth();
 
   useEffect(() => {
-    !user?.isActivated && pushNotice({
+    !user?.isActivated && pushNoticeUnique({
       type: 'warning',
       children: `
         Для получения доступа к полному функционалу сервиса вам необходимо подтверить почту.<br/>
@@ -19,11 +21,9 @@ const Profile : FC = () => {
     });
   }, []);
 
-  const handleSubmit = () => { console.log('! OK !'); };
-
   return (
     <MainLayout>
-      <ControlledForm handleSubmit={handleSubmit} className="form form--col2">
+      <ControlledForm handleSubmit={handleRedact} className="form form--col2">
         <TextField
           name="email"
           label="Email"
@@ -35,7 +35,6 @@ const Profile : FC = () => {
           name="password"
           label="Новый пароль"
           type="password"
-          rules={{ isRequired: { msg: 'Введите пароль!' } }}
           className="form-item form-block__form-item"
         />
         <TextField

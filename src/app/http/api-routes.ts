@@ -4,4 +4,5 @@ export enum ApiRoutes {
   LOGOUT = '/logout',
   REFRESH = '/refresh',
   REMEMBER = '/remember',
+  REDACT = '/redact',
 }
