@@ -6,4 +6,6 @@ export default interface IUser {
   name?: string,
   isActivated: boolean,
   role: UserRole,
+  registered?: number,
+  lastAction?: number,
 }

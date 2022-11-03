@@ -58,5 +58,6 @@ module.exports = {
         "react/jsx-one-expression-per-line": 0,
         "react/jsx-no-constructed-context-values": 0,
         "consistent-return": 0,
+        "no-use-before-define": 0,
     }
 }
