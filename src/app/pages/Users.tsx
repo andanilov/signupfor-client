@@ -6,7 +6,6 @@ import React, {
 } from 'react';
 import SimpleTable, { ISimpleTableHead } from '../components/common/SimpleTable';
 import TableSkeleton from '../components/common/Skeleton/TableSkeleton';
-import NavPage from '../components/NavPage';
 import { useUser } from '../hooks/useUser';
 import MainLayout from '../layouts/MainLayout';
 import IUser from '../models/IUser';
@@ -14,7 +13,7 @@ import config from '../../config';
 
 const Users : FC = () => {
   const [users, setUsers] = useState<IUser[]>();
-  const { getUsers } = useUser();
+  const { getUsers, removeUser } = useUser();
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,6 +22,10 @@ const Users : FC = () => {
         .catch(() => setUsers([]));
     }, 2000);
   }, []);
+
+  const removeUserHandle = (id: string) => {
+    removeUser(id).then(() => { setUsers((usrs) => usrs?.filter(({ _id }) => id !== _id)); });
+  };
 
   const tHead = [
     { title: 'E-mail' },
@@ -43,7 +46,7 @@ const Users : FC = () => {
       user?.isActivated ? 'да' : 'нет',
       user?.lastAction,
       user?.registered,
-      'Удалить',
+      <button className="btn btn-link" onClick={() => removeUserHandle(user._id)} type="button">Удалить</button>,
     ])), [users]);
 
   return (

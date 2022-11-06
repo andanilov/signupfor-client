@@ -25,7 +25,7 @@ const NavLogin : FC<INavLogin> = ({ className = '' }) => {
           ? (
             <>
               <NavLinkStyled to={routesMap.PROFILE.path} className="nav-item nav-login__item">
-                {user.name ?? user.email}
+                { user.name || user.email }
               </NavLinkStyled>
               <IoLogOutOutline onClick={handleLogout} className="nav-item nav-login__item--icon" />
             </>

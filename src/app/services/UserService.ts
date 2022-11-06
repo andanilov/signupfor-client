@@ -7,14 +7,19 @@ import IUser from '../models/IUser';
 
 export default class UserService {
   static async getUsers(): Promise<IUser[]> {
-    const response = await api.get<IUser[]>(ApiRoutes.USERS, {
+    const { data } = await api.get<IUser[]>(ApiRoutes.USERS, {
       params: {
         sortCol: 'email',
         sortDirectiorn: 1,
         limit: 100,
       },
     });
-    return response.data;
+    return data;
+  }
+
+  static async removeUser(_id: string) {
+    const { data } = await api.delete<IUser>(`${ApiRoutes.USER}/${_id}`);
+    return data;
   }
 }
 

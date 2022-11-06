@@ -7,5 +7,6 @@ export enum ApiRoutes {
   REMEMBER = '/remember',
   REDACT = '/redact',
   // Users
-  USERS = '/users'
+  USERS = '/users',
+  USER = '/user',
 }
