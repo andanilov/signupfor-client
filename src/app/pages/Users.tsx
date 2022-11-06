@@ -10,6 +10,7 @@ import { useUser } from '../hooks/useUser';
 import MainLayout from '../layouts/MainLayout';
 import IUser from '../models/IUser';
 import config from '../../config';
+import ButtonDelay from '../components/common/ControlledForm/ButtonDelay';
 
 const Users : FC = () => {
   const [users, setUsers] = useState<IUser[]>();
@@ -46,7 +47,10 @@ const Users : FC = () => {
       user?.isActivated ? 'да' : 'нет',
       user?.lastAction,
       user?.registered,
-      <button className="btn btn-link" onClick={() => removeUserHandle(user._id)} type="button">Удалить</button>,
+      <ButtonDelay handler={() => { console.log('!! - ', user._id); }}>
+        Удалить
+      </ButtonDelay>,
+      // <button className="btn btn-link" onClick={() => removeUserHandle(user._id)} type="button">Удалить</button>,
     ])), [users]);
 
   return (

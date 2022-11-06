@@ -62,5 +62,6 @@ module.exports = {
         "lines-between-class-members": 0,
         "class-methods-use-this": 0,
         "no-underscore-dangle": 0,
+        "no-return-assign": 0,
     }
 }
