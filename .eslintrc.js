@@ -59,5 +59,7 @@ module.exports = {
         "react/jsx-no-constructed-context-values": 0,
         "consistent-return": 0,
         "no-use-before-define": 0,
+        "lines-between-class-members": 0,
+        "class-methods-use-this": 0,
     }
 }

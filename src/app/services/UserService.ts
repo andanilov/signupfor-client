@@ -11,7 +11,7 @@ export default class UserService {
       params: {
         sortCol: 'email',
         sortDirectiorn: 1,
-        limit: 1,
+        limit: 100,
       },
     });
     return response.data;

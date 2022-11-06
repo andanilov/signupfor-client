@@ -4,20 +4,21 @@
     text-align: center;
     border-collapse: collapse;
 
-    & tr:nth-child(2n) {
-        background-color: white;        
-    }
+    // & tr:nth-child(2n) {
+    //     background-color: white;        
+    // }
 
     &__th {
-        height: 2em;
-        font-weight: 400;
-        font-size: 1.1em;
+        height: 2.5em;
+        font-weight: 600;
+        font-size: 0.9em;
         border-bottom: 1px solid rgb(201, 201, 201);
     }
 
     &__td {
-        height: 3em;
+        height: 2.5em;
         font-weight: 400;
         font-size: 1.1em;
+        border-bottom: 1px solid rgb(201, 201, 201);
     }
 }
