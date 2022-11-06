@@ -53,7 +53,7 @@ const ButtonDelay = ({
       onClick={toggleClick}
       className={className}
     >
-      {time ? `${delayText} ${time}` : children}
+      {time ? `${delayText} ${time}` : <>&nbsp; {children} &nbsp;</>}
     </button>
   );
 };

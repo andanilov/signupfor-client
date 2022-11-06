@@ -11,10 +11,13 @@ import MainLayout from '../layouts/MainLayout';
 import IUser from '../models/IUser';
 import config from '../../config';
 import ButtonDelay from '../components/common/ControlledForm/ButtonDelay';
+import timeHasPassed from '../utils/timeHasPassed';
+import { useNotices } from '../components/common/Notices';
 
 const Users : FC = () => {
   const [users, setUsers] = useState<IUser[]>();
   const { getUsers, removeUser } = useUser();
+  const { pushNotice } = useNotices();
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +28,10 @@ const Users : FC = () => {
   }, []);
 
   const removeUserHandle = (id: string) => {
-    removeUser(id).then(() => { setUsers((usrs) => usrs?.filter(({ _id }) => id !== _id)); });
+    removeUser(id).then(() => {
+      setUsers((usrs) => usrs?.filter(({ _id }) => id !== _id));
+      pushNotice({ type: 'success', children: `Пользователь (id: ${id} успешно удалён!` });
+    });
   };
 
   const tHead = [
@@ -45,12 +51,14 @@ const Users : FC = () => {
       user.role,
       user?.name,
       user?.isActivated ? 'да' : 'нет',
-      user?.lastAction,
-      user?.registered,
-      <ButtonDelay handler={() => { console.log('!! - ', user._id); }}>
+      user?.lastAction && timeHasPassed(user.lastAction),
+      user?.registered && timeHasPassed(user.registered),
+      <ButtonDelay
+        handler={() => { removeUserHandle(user._id); }}
+        className="btn btn--error btn--small"
+      >
         Удалить
       </ButtonDelay>,
-      // <button className="btn btn-link" onClick={() => removeUserHandle(user._id)} type="button">Удалить</button>,
     ])), [users]);
 
   return (

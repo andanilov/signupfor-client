@@ -4,6 +4,7 @@
     cursor: pointer;
     border-radius: .3em;
     transition: $base-transistion;
+    padding: .5em;
 
     &--success {
         background-color: $bg-success;
@@ -12,10 +13,16 @@
         &:hover { background-color: $bg-success-light; }
     }
 
-    &--large {
-        font-size: $text-large;
-        padding: .5em;
+    &--error {
+        background-color: $bg-error;
+        color: white;        
+
+        &:hover { background-color: $bg-error-light; }
     }
+
+    &--large { font-size: $text-large; }
+    &--medium {  font-size: $text-medium; }
+    &--small {  font-size: $text-small; }
 
     &[disabled] {
         opacity: .5;
