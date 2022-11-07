@@ -34,11 +34,11 @@ export function useUser() {
   };
 
   function setError(error: TError, msg?: string) {
-    const { message } = (axios.isAxiosError(error)
-      ? error.response?.data
-      : error) as { message: string};
-    pushNotice({ type: 'error', children: msg || message || 'Что-то пошло не так!', size: 'small' });
-    throw Error(message);
+    if (axios.isAxiosError(error) && error.response?.status !== 401) {
+      const { message } = error.response?.data as { message: string };
+      pushNotice({ type: 'error', children: msg || message || 'Что-то пошло не так!', size: 'small' });
+    }
+    throw new Error();
   }
 
   return {

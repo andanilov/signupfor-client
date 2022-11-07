@@ -23,7 +23,7 @@ const Users : FC = () => {
     setTimeout(() => {
       getUsers()
         .then((usrs) => setUsers(usrs))
-        .catch(() => setUsers([]));
+        .catch(() => setUsers(() => undefined));
     }, 2000);
   }, []);
 

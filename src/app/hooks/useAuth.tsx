@@ -11,7 +11,6 @@ import { usePopUp } from '../components/common/PopUp/usePopUp';
 import { AuthResponse } from '../models/response/auth-response';
 import { useNotices } from '../components/common/Notices';
 import validator, { rules } from '../utils/validator';
-import IUser from '../models/IUser';
 
 export function useAuth() {
   const dispatch = useTypedDispatch();

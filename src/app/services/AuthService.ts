@@ -7,6 +7,10 @@ import IUser from '../models/IUser';
 
 export default class AuthService {
   static async checkAuth(): Promise<AuthResponse> {
+    const { data } = await api.get<AuthResponse>(ApiRoutes.REFRESH);
+    return data;
+  }
+  static async refresh(): Promise<AuthResponse> {
     const { data } = await axios.get<AuthResponse>(appConfig.API_URL + ApiRoutes.REFRESH, {
       withCredentials: true, // Add cookie to every request
     });
