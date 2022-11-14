@@ -40,4 +40,4 @@ export default authSlice.reducer;
 export const { setUser, removeUser } = authSlice.actions;
 
 // Selectors
-export const getCurrentUser = () => (state: RootState) => state.auth.user;
+export const getCurrentUser = () => (state: RootState) => state.authSlice.user;

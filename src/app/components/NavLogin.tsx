@@ -8,6 +8,7 @@ import { useAuth } from '../hooks/useAuth';
 import { routesMap } from '../routes';
 import NavigateService from '../services/NavigateService';
 import NavLinkStyled from './common/NavLinkStyled';
+import { getCurrentUser } from '../store/authSlice';
 
 interface INavLogin {
   className?: string,
@@ -15,7 +16,7 @@ interface INavLogin {
 
 const NavLogin : FC<INavLogin> = ({ className = '' }) => {
   const { isOpened, toggleHandle } = usePopUp();
-  const { user } = useTypedSelector((state) => state.auth);
+  const user = useTypedSelector(getCurrentUser());
   const { handleLogout } = useAuth();
 
   return (

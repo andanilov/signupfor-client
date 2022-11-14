@@ -15,17 +15,22 @@ export interface ICommonField {
   label?: string,
   value?: string,
   onChange?: EventHandler,
+  change?: EventHandler,
   noControlled?: boolean,
   defaultValue?: string,
   rules?: ValidationRules,
   error?: FieldError,
   className?: string,
   disabled?: boolean,
+  min?: string,
+  max?: string,
+  step?: string,
+  ref?: string,
 }
 
 export interface ITextField extends ICommonField {
   placeholder?: string,
-  type?: 'text' | 'password',
+  type?: 'text' | 'password' | 'datetime-local',
 }
 
 export interface ISelectField extends ICommonField {
@@ -36,6 +41,7 @@ export interface ISelectField extends ICommonField {
 export interface ILabelWrapper {
   label?: string,
   error?: FieldError,
+  className?: string,
   children: ReactNode | ReactNode[],
 }
 

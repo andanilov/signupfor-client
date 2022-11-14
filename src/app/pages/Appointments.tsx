@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
+import EventAdd from '../components/EventAdd';
 import MainLayout from '../layouts/MainLayout';
 
 const Appointments : FC = () => (
   <MainLayout>
-    Appointments
+    <EventAdd />
   </MainLayout>
 );
 

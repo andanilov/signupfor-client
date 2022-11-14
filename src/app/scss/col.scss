@@ -1,0 +1,30 @@
+$grid-breakpoints-xs: 0;
+$grid-breakpoints-sm: 576px;
+$grid-breakpoints-md: 768px;
+$grid-breakpoints-lg: 992px;
+$grid-breakpoints-xl: 1200px;
+$grid-breakpoints-xxl: 1400px;
+
+@mixin screen-size($media) {
+    @media screen and (min-width: $media) {
+        &-1 { width: 100%; }        
+        &-2 { width: 50%; }
+        &-3 { width: 33.3%; }
+        &-4 { width: 25%; }
+        &-5 { width: 20%; }
+        &-6 { width: 16.6%; }
+    }
+}
+
+.col {
+    box-sizing: border-box;
+    width: 100%;
+
+    @include screen-size(0);
+}
+
+.col-sm { @include screen-size($grid-breakpoints-sm); }
+.col-md { @include screen-size($grid-breakpoints-md); }
+.col-lg { @include screen-size($grid-breakpoints-lg); }
+.col-xl { @include screen-size($grid-breakpoints-xl); }
+.col-xxl { @include screen-size($grid-breakpoints-xxl); }

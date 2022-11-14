@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
 import { ILabelWrapper } from './types';
 
-const LabelWrapper: FC<ILabelWrapper> = ({ label, error, children }) => {
+const LabelWrapper: FC<ILabelWrapper> = ({
+  label,
+  error,
+  className,
+  children,
+}) => {
   children = (
-    <div className={error && 'error'}>
+    <div className={`${error ? 'error' : ''} ${!label ? (className || '') : ''}`}>
       {children}
       {error && <div>{error}</div>}
     </div>
@@ -11,7 +16,7 @@ const LabelWrapper: FC<ILabelWrapper> = ({ label, error, children }) => {
 
   return label
     ? (
-      <label>
+      <label className={className || ''}>
         {label}
         {children}
       </label>

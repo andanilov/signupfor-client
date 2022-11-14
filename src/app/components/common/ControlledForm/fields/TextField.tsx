@@ -10,12 +10,15 @@ const TextField = ({
   className,
   ...props
 } : ITextField) => (
-  <LabelWrapper label={label} error={error}>
+  <LabelWrapper
+    label={label}
+    error={error}
+    className={className || ''}
+  >
     <input
       type={type || 'text'}
       name={name}
       autoComplete={type === 'password' ? 'on' : 'off'}
-      className={className || ''}
       {...props}
     />
   </LabelWrapper>
